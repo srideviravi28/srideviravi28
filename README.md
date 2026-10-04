@@ -2,7 +2,7 @@
 
 🎓 First-Year ECE Student | Aspiring VLSI Designer & Embedded Systems Engineer | Long-term: Silicon Architecture
 
-[LinkedIn](https://www.linkedin.com/in/sridevi-r-b4241343b) | [GitHub](https://github.com/srideeviravi28) | [Email](srideviravi0810@gmail.com)
+[LinkedIn](YOUR_LINKEDIN_LINK) | [GitHub](https://github.com/srideeviravi28) | [Email](YOUR_EMAIL)
 
 ---
 
@@ -65,4 +65,4 @@
 
 📧 *Email:* YOUR_EMAIL  
 💼 *LinkedIn:* YOUR_LINKEDIN_LINK  
-🐙 *GitHub:* https://github.com/srideevira
+🐙 *GitHub:* https://github.com/srideeviravi28
