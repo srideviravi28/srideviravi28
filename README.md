@@ -62,6 +62,6 @@
 
 ### 🤝 Connect With Me
 
-📧 *Email:* srideviravi0810@gmail.com 
+📧 *Email:* srideviravi0810@gmail.com 💼 *LinkedIn:*https://www.linkedin.com/in/sridevi-r-b4241343b  
 💼 *LinkedIn:* YOUR_LINKEDIN_LINK  
 🐙 *GitHub:* https://github.com/srideeviravi28
