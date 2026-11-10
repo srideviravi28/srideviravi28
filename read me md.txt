@@ -1,0 +1,281 @@
+# 🚨 ResQLink
+
+> **A Centralized Emergency Incident Reporting, Automatic Severity Classification, Intelligent Prioritisation, and Nearest-Team Dispatch Platform.**
+
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26.svg)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6.svg)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E.svg)
+![Storage](https://img.shields.io/badge/storage-localStorage-4c8bf5.svg)
+![Hackathon](https://img.shields.io/badge/Code%20Clash-2026-ef4444.svg)
+![Build](https://img.shields.io/badge/build-passing-brightgreen.svg)
+
+**🔗 Live Demo:** [https://bolt.new/p/72801567](https://bolt.new/p/72801567)
+
+---
+
+## 📌 Problem Statement
+
+During road accidents, fires, floods, building collapses and other disasters, coordinating the emergency response becomes extremely difficult. Reports arrive from many sources at once, and controllers must decide in seconds which incident is most critical and which team should respond. Existing workflows suffer from three fundamental bottlenecks:
+
+1. **Scattered Reports, No Central View:** Calls, messages and walk-in reports arrive through different channels. Without one place that collects them, critical incidents are missed or duplicated, and administrators cannot see the whole situation.
+2. **Subjective Prioritisation:** Deciding which emergency comes first is often done by gut feeling. A fire with 20 trapped people and a minor road accident can sit in the same queue, and the time an incident has already been waiting is rarely taken into account.
+3. **Slow, Manual Team Dispatch:** Finding the closest free team that has the right skills (fire, medical or rescue) is done by phone or memory. Teams are double-booked, left idle, or sent from across the city while a closer unit is available.
+
+**ResQLink** addresses this with a single web platform. Users submit structured emergency reports, the system **classifies severity automatically**, **ranks every open incident by a priority score**, and **assigns the nearest available, suitable response team** using real distance calculation. Administrators track each incident through its full lifecycle on a live dashboard and map.
+
+---
+
+## 🚀 Features
+
+### Round 1 – Emergency Incident Reporting & Monitoring
+
+| Feature | Module | Mechanism | Output | Status |
+|---|---|---|---|---|
+| **Emergency Reporting Form** | `report()` / `sub()` | Validated form capturing title, description, category, location, people affected and optional contact. | A stored incident record with a unique ID and timestamp. | **Complete** |
+| **Six Emergency Categories** | `CATS` | Fire, Road Accident, Medical, Flood, Building Collapse, Other, each with an icon, a risk weight and a list of suitable team types. | Every incident is tagged and routed by category. | **Complete** |
+| **Automatic Severity Classification** | `classify()` | Rule-based score from category weight, people affected and emergency keywords in the text. | Low / Medium / High / Critical level on every report. | **Complete** |
+| **Emergency Dashboard** | `dash()` | Live aggregation of all incidents. | Total, critical, pending and resolved counts plus incidents by category. | **Complete** |
+| **Incident Management** | `list()` / `setStatus()` / `del()` | Filterable incident list with status dropdown and delete action. | Administrators view, update and remove reports. | **Complete** |
+| **Professional, Responsive UI** | CSS | Mobile-first grid layout, light and dark themes, pulsing highlight on Critical incidents. | Readable on phones, tablets and desktops. | **Complete** |
+
+### Round 2 – Intelligent Emergency Coordination
+
+| Feature | Module | Mechanism | Output | Status |
+|---|---|---|---|---|
+| **Intelligent Incident Prioritisation** | `prio()` | Composite score of severity, people affected, time since reporting and category weight. | Ranked priority queue with a numeric score on each card. | **Complete** |
+| **Response Team Management** | `teams()` / `addT()` / `tog()` | Create teams with ID, name, category (Fire / Medical / Rescue), coordinates, availability and assigned incident. | Editable fleet of response teams. | **Complete** |
+| **Location-Based Team Assignment** | `dist()` / `assign()` | Haversine great-circle distance between each team and the incident; filters by availability and suitability. | Nearest suitable team assigned automatically. | **Complete** |
+| **Assignment & Incident Tracking** | `setStatus()` | Lifecycle: Reported, Pending, Assigned, In Progress, Resolved. Teams switch to busy on assignment and free on resolution. | Assigned team details shown on each incident. | **Complete** |
+| **Route & Location Visualisation** | `map()` | SVG map plots incidents (colour-coded by severity) and teams, with dashed route lines and distance labels. | Visual overview of the response situation. | **Complete** |
+| **Advanced Analytics Dashboard** | `dash()` | Extended statistics. | Available and busy teams, assigned and resolved incidents, severity mix, category distribution. | **Complete** |
+
+---
+
+## 🏗️ Tech Stack
+
+| Component | Version | Role in Architecture | Technical Rationale |
+|---|---|---|---|
+| **HTML5** | Living Standard | Application structure | Semantic markup, form validation attributes, zero build step. |
+| **CSS3** | Variables, Grid, Flexbox | Design system and layout | Theme tokens on `:root` provide light and dark modes; Grid gives a responsive layout without a framework. |
+| **JavaScript** | ES6+ (vanilla) | Application logic | No dependencies, so the whole app loads instantly and works offline. |
+| **SVG** | 1.1 | Map and route visualisation | Resolution-independent graphics drawn directly from incident and team coordinates. |
+| **Web Storage API** | `localStorage` | Data persistence | Reports and teams survive page refreshes without a server. |
+
+---
+
+## 📂 Project Structure
+
+resqlink/
+├── emergency-platform.html     # Complete application (markup, styles, logic)
+│   ├──                  # Theme tokens, layout, badges, critical-incident animation
+│   └── 
+│       ├── CATS / SEV / KW     # Categories, severity weights, emergency keywords
+│       ├── load() / save()     # localStorage persistence and demo seed data
+│       ├── classify()          # Automatic severity classification
+│       ├── prio()              # Priority score calculation
+│       ├── dist()              # Haversine distance (km)
+│       ├── assign()            # Nearest suitable team assignment
+│       ├── setStatus() / del() # Lifecycle updates and report deletion
+│       ├── dash()              # Dashboard and analytics view
+│       ├── report() / sub()    # Reporting form and submission
+│       ├── list()              # Incident management view with filters
+│       ├── teams()             # Response team management view
+│       └── map()               # SVG map with route lines
+├── screenshots/                # Images used in this README
+├── LICENSE                     # MIT License
+└── README.md                   # Main documentation file
+
+Code snippet
+
+---
+
+## ⚙️ Installation & Setup
+
+### Prerequisites
+- Any modern browser (Chrome, Edge, Firefox, Safari)
+- **Optional:** Python 3.x, only if you prefer to serve the file locally
+- **Optional:** Git, to clone the repository
+
+### Step 1: Clone the Repository
+
+```bash
+git clone [https://github.com/your-username/resqlink.git](https://github.com/your-username/resqlink.git)
+cd resqlink
+Step 2: Run the Application
+Option A, open directly: double-click emergency-platform.html.
+
+Option B, local server:
+
+Bash
+python -m http.server 8000
+Then visit http://localhost:8000/emergency-platform.html.
+
+No install, build or configuration step is required.
+
+Step 3: Deploy to GitHub Pages (optional)
+Push the repository to GitHub.
+
+Open Settings → Pages.
+
+Choose your main branch and the / (root) folder, then save.
+
+Your app will be live at https://your-username.github.io/resqlink/emergency-platform.html.
+
+Step 4: Quick Verification
+Open the Dashboard. Three demo incidents and six response teams are pre-loaded.
+
+Go to Report, enter "Gas leak, children trapped" as a Fire Emergency with 10 people affected, and submit. It should classify as Critical.
+
+Open Incidents and click Assign nearest team. A Fire team is assigned with its distance in km.
+
+Open Map to see the dashed route between team and incident.
+
+Set the incident to Resolved. The team returns to Available on the Teams tab.
+
+🧠 How It Works
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                             RESQLINK PIPELINE                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  STAGE 1: REPORTING                                                         │
+│                                                                             │
+│  User submits form      ➔ Input validation                                  │
+│                         ➔ Incident record created (ID, timestamp, coords)   │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  STAGE 2: CLASSIFICATION                                                    │
+│                                                                             │
+│  Category weight + people-affected bonus + keyword bonus                    │
+│                         ➔ Low / Medium / High / Critical                    │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  STAGE 3: PRIORITISATION & DISPATCH                                         │
+│                                                                             │
+│  Priority score ranks open incidents                                        │
+│                         ➔ Filter teams: available + suitable category       │
+│                         ➔ Haversine distance to each candidate              │
+│                         ➔ Nearest team assigned, marked Busy                │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  STAGE 4: TRACKING & VISUALISATION                                          │
+│                                                                             │
+│  Status: Reported ➔ Pending ➔ Assigned ➔ In Progress ➔ Resolved             │
+│                         ➔ Team freed on resolution                          │
+│                         ➔ Dashboard, analytics and SVG map update           │
+└─────────────────────────────────────────────────────────────────────────────┘
+```[cite: 1]
+
+### 1. Severity Classification
+
+severity_score = category_weight + people_bonus + (1.5 × keyword_matches)
+
+Code snippet
+
+| Category | Weight | | People Affected | Bonus |
+|---|---|---|---|---|
+| Fire Emergency | 3.0 | | 20 or more | +3 |
+| Building Collapse | 3.0 | | 5 to 19 | +2 |
+| Medical Emergency | 2.5 | | 1 to 4 | +1 |
+| Flood | 2.5 | | 0 | 0 |
+| Road Accident | 2.0 | | | |
+| Other Emergency | 1.0 | | | |[cite: 1]
+
+**Keywords:** `trapped`, `explosion`, `fatal`, `dead`, `unconscious`, `bleeding`, `collapse`, `children`, `spreading`, `gas`, `drowning`[cite: 1]
+
+| Score | Severity |
+|---|---|
+| 8 or above | 🔴 Critical |
+| 6 to 7.9 | 🟠 High |
+| 4 to 5.9 | 🟡 Medium |
+| Below 4 | 🟢 Low |[cite: 1]
+
+### 2. Priority Score
+
+priority = (severity_level × 25)
++ (min(people, 50) × 0.8)
++ min(minutes_since_report × 0.5, 30)
++ (category_weight × 3)
+
+Code snippet
+
+Severity level is Low = 1, Medium = 2, High = 3, Critical = 4. The waiting-time term is capped at 30, so an old minor incident can never outrank a fresh critical one, but a neglected incident steadily climbs the queue.
+
+### 3. Nearest-Team Assignment
+
+| Incident Category | Suitable Teams |
+|---|---|
+| Fire Emergency | Fire |
+| Road Accident | Medical, Rescue |
+| Medical Emergency | Medical |
+| Flood | Rescue |
+| Building Collapse | Rescue, Fire |
+| Other Emergency | Fire, Medical, Rescue |[cite: 1]
+
+Distance is calculated with the **Haversine formula**:
+
+a = sin²(Δlat / 2) + cos(lat₁) · cos(lat₂) · sin²(Δlng / 2)
+distance = 2 · R · asin(√a)        where R = 6371 km
+
+Code snippet
+
+The available, suitable team with the smallest distance is assigned. **Auto-dispatch all** processes every unassigned open incident in priority order, so the most urgent incident gets the closest team first.
+
+### 4. Lifecycle & Team Availability
+
+| Event | Incident Status | Team Status |
+|---|---|---|
+| Report submitted | Reported | n/a |
+| Team assigned | Assigned | Busy |
+| Team arrives and works | In Progress | Busy |
+| Incident resolved | Resolved | Available |
+| Report deleted | Removed | Available (if assigned) |[cite: 1]
+
+---
+
+## 📊 Dashboard Metrics
+
+| Metric | Description |
+|---|---|
+| Total Incidents | All reports in the system |
+| Critical | Open incidents classified Critical |
+| Pending | Reported or Pending incidents awaiting a team |
+| Assigned | Incidents that are Assigned or In Progress |
+| Resolved | Completed incidents |
+| Teams Available / Busy | Current fleet status |
+| By Category / Severity | Bar charts of incident distribution |[cite: 1]
+
+---
+
+## 🔮 Future Improvements
+
+- Backend API with a shared database (Node.js / FastAPI with PostgreSQL) so many users see the same data in real time
+- Administrator authentication and role-based access
+- Real map tiles (Leaflet / OpenStreetMap) with road-based routing and ETA
+- SMS and email alerts to dispatched teams
+- Duplicate-report detection by location and time
+- Machine-learning severity prediction trained on historical incidents
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Commit your changes: `git commit -m "Add your feature"`
+4. Push the branch: `git push origin feature/your-feature`
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for details.[cite: 1]
+
+---
+
+## 👤 Author
+
+**Your Name**  
+GitHub: [@your-username](https://github.com/your-username)  
+Built for **Code Clash 2026**[cite: 1]
+
+---
+
+⭐ If you found this project useful, give it a star!
